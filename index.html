@@ -21,27 +21,31 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #0b0b0b;
-      color: #e0e0e0;
+      background-color: #ffffff;      /* white background */
+      color: #1a1a1a;                  /* dark text (almost black) */
       line-height: 1.5;
       scroll-behavior: smooth;
     }
 
-    /* accent neon green */
+    /* new light theme with red accent */
     :root {
-      --accent: #ff1e00;
-      --accent-dim: #58c718;
-      --dark-bg: #0f0f0f;
-      --card-bg: #1a1a1a;
-      --border-dim: #2a2a2a;
+      --accent: #d62828;                /* rich red */
+      --accent-hover: #b11f1f;
+      --light-bg: #ffffff;
+      --card-bg: #f8f9fa;               /* off-white for cards */
+      --border-light: #e2e2e2;
+      --text-dark: #1a1a1a;
+      --text-light: #4a4a4a;
+      --header-bg: rgba(255,255,255,0.95);
     }
 
     .accent-text { color: var(--accent); }
-    .accent-bg { background-color: var(--accent); color: #0b0b0b; }
+    .accent-bg { background-color: var(--accent); color: #ffffff; }
+
     .btn {
       display: inline-block;
       background-color: var(--accent);
-      color: #0b0b0b;
+      color: #ffffff;
       font-weight: 600;
       padding: 0.75rem 1.8rem;
       border-radius: 40px;
@@ -52,16 +56,16 @@
       font-size: 1rem;
     }
     .btn:hover {
-      background-color: #00cc77;
-      transform: scale(1.03);
-      box-shadow: 0 0 15px rgba(0,255,150,0.4);
+      background-color: var(--accent-hover);
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(214, 40, 40, 0.3);
     }
     .btn-outline {
       background: transparent;
       border: 2px solid var(--accent);
       color: var(--accent);
     }
-    .btn-outline:hover { background: var(--accent); color: #0b0b0b; }
+    .btn-outline:hover { background: var(--accent); color: #ffffff; }
 
     /* layout */
     .container {
@@ -72,13 +76,14 @@
 
     section { padding: 4rem 0; }
 
-    /* announcement bar */
+    /* announcement bar - light */
     .announcement {
-      background: #0f0f0f;
-      border-bottom: 1px solid #2a2a2a;
+      background: #f1f3f5;
+      border-bottom: 1px solid var(--border-light);
       padding: 0.7rem 0;
       overflow: hidden;
       white-space: nowrap;
+      color: var(--text-dark);
     }
     .scrolling-text {
       display: inline-block;
@@ -86,20 +91,20 @@
       font-weight: 500;
       color: var(--accent);
     }
-    .scrolling-text i { margin-right: 0.5rem; color: #fff; }
+    .scrolling-text i { margin-right: 0.5rem; color: var(--text-dark); }
     @keyframes scroll {
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
     }
 
-    /* header / navbar */
+    /* header / navbar - light */
     .sticky-header {
       position: sticky;
       top: 0;
       z-index: 50;
-      background-color: rgba(10,10,10,0.95);
+      background-color: var(--header-bg);
       backdrop-filter: blur(8px);
-      border-bottom: 1px solid #2a2a2a;
+      border-bottom: 1px solid var(--border-light);
     }
     .nav-container {
       display: flex;
@@ -110,32 +115,31 @@
       margin: 0 auto;
     }
     .logo img {
-  height: 60px;
-  width: auto;
-  transition: transform 0.3s ease;
-}
-
-.logo img:hover {
-  transform: scale(1.05);
-}
+      height: 60px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+    .logo img:hover {
+      transform: scale(1.05);
+    }
     .nav-links {
       display: flex;
       gap: 2rem;
     }
     .nav-links a {
-      color: #eee;
+      color: var(--text-dark);
       text-decoration: none;
       font-weight: 500;
       transition: 0.2s;
       font-size: 1rem;
     }
     .nav-links a:hover { color: var(--accent); }
-    .menu-toggle { display: none; } /* we use flex on desktop, mobile later */
+    .menu-toggle { display: none; }
 
-    /* hero */
+    /* hero - keep overlay but lighter background image */
     .hero {
-      background: linear-gradient(0deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('1000414971.jpg') center/cover no-repeat;
-      min-height: 90vh;
+      background: linear-gradient(0deg, rgba(255,255,255,0.85), rgba(255,255,255,0.7)), url('1000414971.jpg') center/cover no-repeat;
+      min-height: 85vh;
       display: flex;
       align-items: center;
     }
@@ -145,45 +149,64 @@
       font-weight: 700;
       line-height: 1.2;
       margin-bottom: 1rem;
-      color: white;
+      color: var(--text-dark);
     }
     .hero h1 span { color: var(--accent); }
     .hero p {
       font-size: 1.3rem;
       margin-bottom: 2rem;
-      color: #ccc;
+      color: var(--text-light);
     }
 
-    /* cards */
+    /* cards - light theme, with image square style */
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 2rem;
       margin-top: 2rem;
     }
     .card {
       background: var(--card-bg);
       border-radius: 24px;
-      padding: 2rem 1.5rem;
-      border: 1px solid #2a2a2a;
+      padding: 1.8rem 1.2rem 1.8rem 1.2rem;
+      border: 1px solid var(--border-light);
       transition: 0.25s ease;
       text-align: center;
+      color: var(--text-dark);
     }
     .card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-5px);
       border-color: var(--accent);
-      box-shadow: 0 20px 30px -15px rgba(0,255,150,0.15);
+      box-shadow: 0 12px 24px -10px rgba(214, 40, 40, 0.2);
     }
-    .card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; }
+    /* square image styling inside service cards */
+    .card .service-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;              /* square */
+      object-fit: cover;                /* cover without distortion */
+      border-radius: 16px;               /* slightly rounded to match card style */
+      margin-bottom: 1rem;
+      border: 2px solid #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .card h3 {
+      margin: 0.5rem 0 0.2rem;
+      font-size: 1.3rem;
+    }
+    .card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
 
-    /* simple image slider */
+    /* slider container - keep but adjust for light */
     .slider-container {
       position: relative;
       max-width: 700px;
-      margin: 2rem auto 0;
+      margin: 3rem auto 0;
       border-radius: 20px;
       overflow: hidden;
-      border: 2px solid #2a2a2a;
+      border: 2px solid var(--border-light);
+      background: #f0f0f0;
     }
     .slider-images {
       display: flex;
@@ -199,9 +222,9 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(0,0,0,0.7);
+      background: rgba(255,255,255,0.8);
       color: var(--accent);
-      border: none;
+      border: 1px solid var(--border-light);
       width: 44px;
       height: 44px;
       border-radius: 44px;
@@ -213,7 +236,7 @@
       justify-content: center;
       transition: 0.2s;
     }
-    .slider-btn:hover { background: #000; color: #fff; }
+    .slider-btn:hover { background: white; color: var(--accent-hover); border-color: var(--accent); }
     .prev { left: 12px; }
     .next { right: 12px; }
     .slider-dots {
@@ -226,62 +249,66 @@
       width: 12px;
       height: 12px;
       border-radius: 20px;
-      background: #444;
+      background: #ccc;
       cursor: pointer;
       transition: 0.2s;
     }
     .dot.active { background: var(--accent); width: 28px; }
 
-    /* reviews */
+    /* reviews - light */
     .review-card {
-      background: #1a1a1a;
+      background: var(--card-bg);
       padding: 2rem;
       border-radius: 28px;
       border-left: 6px solid var(--accent);
       font-style: italic;
+      color: var(--text-dark);
+      border: 1px solid var(--border-light);
+      border-left: 6px solid var(--accent);
     }
     .review-card h4 { margin-top: 1.5rem; color: var(--accent); font-style: normal; }
 
-    /* contact split */
+    /* contact split - light */
     .contact-split {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
-      background: #141414;
+      background: #f2f4f6;
       border-radius: 32px;
       padding: 2.5rem;
-      border: 1px solid #2a2a2a;
+      border: 1px solid var(--border-light);
     }
     .contact-info i { color: var(--accent); width: 32px; font-size: 1.3rem; }
-    .contact-info p { margin: 1.2rem 0; display: flex; align-items: center; gap: 1rem; }
+    .contact-info p { margin: 1.2rem 0; display: flex; align-items: center; gap: 1rem; color: var(--text-dark); }
     .contact-form input, .contact-form textarea {
       width: 100%;
       padding: 1rem;
       margin-bottom: 1.2rem;
-      background: #222;
-      border: 1px solid #3a3a3a;
+      background: #ffffff;
+      border: 1px solid #d0d0d0;
       border-radius: 16px;
       font-family: inherit;
-      color: white;
+      color: var(--text-dark);
       transition: 0.2s;
     }
     .contact-form input:focus, .contact-form textarea:focus {
       outline: none;
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(0,255,150,0.2);
+      box-shadow: 0 0 0 3px rgba(214,40,40,0.15);
     }
     .contact-form .btn { width: 100%; }
 
-    /* footer */
+    /* footer - light */
     .footer {
-      background: #070707;
+      background: #eaeef2;
       padding: 2rem;
       text-align: center;
-      border-top: 1px solid #2a2a2a;
+      border-top: 1px solid var(--border-light);
+      color: var(--text-dark);
     }
     .footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
 
-    /* floating WhatsApp widget */
+    /* floating WhatsApp widget - adapt to light */
     .whatsapp-float {
       position: fixed;
       bottom: 30px;
@@ -299,7 +326,7 @@
       font-size: 2.5rem;
       color: white;
       cursor: pointer;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
       transition: 0.2s;
       border: 3px solid var(--accent);
     }
@@ -309,30 +336,32 @@
       bottom: 90px;
       right: 0;
       width: 300px;
-      background: #1c1c1c;
+      background: #ffffff;
       border-radius: 28px;
       padding: 1.5rem;
       border: 1px solid var(--accent);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      box-shadow: 0 20px 30px rgba(0,0,0,0.15);
       display: none;
       flex-direction: column;
       gap: 1rem;
+      color: var(--text-dark);
     }
     .chat-card.show { display: flex; }
     .greeting { font-weight: 600; color: var(--accent); }
     .quick-reply {
-      background: #2a2a2a;
+      background: #f0f0f0;
       padding: 0.8rem 1rem;
       border-radius: 40px;
       text-align: center;
-      color: white;
+      color: var(--text-dark);
       text-decoration: none;
       font-weight: 500;
       transition: 0.2s;
-      border: 1px solid #3a3a3a;
+      border: 1px solid #d4d4d4;
     }
     .quick-reply i { margin-right: 0.5rem; color: #25D366; }
-    .quick-reply:hover { background: var(--accent); color: #0b0b0b; border-color: var(--accent); }
+    .quick-reply:hover { background: var(--accent); color: white; border-color: var(--accent); }
+    .quick-reply:hover i { color: white; }
 
     /* responsive */
     @media (max-width: 800px) {
@@ -343,11 +372,10 @@
     @media (max-width: 600px) {
       .nav-container { flex-wrap: wrap; }
       .nav-links { order: 3; width: 100%; justify-content: space-around; margin-top: 1rem; }
-      .logo-placeholder { width: 50px; height: 50px; }
       .hero { min-height: 70vh; }
     }
 
-    /* fade-in on scroll (simple) */
+    /* fade-in on scroll */
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
@@ -360,7 +388,7 @@
   </style>
 </head>
 <body>
-  <!-- announcement bar -->
+  <!-- announcement bar (light) -->
   <div class="announcement">
     <div class="scrolling-text">
       <i class="fas fa-phone-alt"></i> Call us: 072 385 1589 | <i class="fab fa-whatsapp"></i> WhatsApp us now for fast service!     
@@ -368,25 +396,22 @@
     </div>
   </div>
 
-  <!-- sticky header with logo placeholder -->
-<header class="sticky-header">
-  <div class="nav-container">
-    
-    <div class="logo">
-      <img src="1773767569037.png" alt="Time Bicycle Logo">
+  <!-- sticky header -->
+  <header class="sticky-header">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="1773767569037.png" alt="Time Bicycle Logo">
+      </div>
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
+  </header>
 
-    <nav class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-  </div>
-</header>
-
-  <!-- hero -->
+  <!-- hero (lighter overlay) -->
   <section id="home" class="hero" style="scroll-margin-top: 80px;">
     <div class="container hero-content fade-in">
       <h1>Time Bicycle <span>Workshop</span> & Rentals</h1>
@@ -395,22 +420,37 @@
     </div>
   </section>
 
-  <!-- services with image slider -->
+  <!-- services section with IMAGES inside cards (square) -->
   <section id="services" style="scroll-margin-top: 80px;">
     <div class="container">
       <h2 class="accent-text" style="font-size: 2.5rem;">Our Services</h2>
-      <p style="margin-bottom: 2rem; font-size: 1.2rem;">We offer full bike servicing, repairs, upgrades, painting and rentals for all riders.</p>
+      <p style="margin-bottom: 2rem; font-size: 1.2rem; color: #4a4a4a;">We offer full bike servicing, repairs, upgrades, painting and rentals for all riders.</p>
       
-      <!-- service cards list (inline with slider) -->
+      <!-- service cards with SQUARE images instead of icons -->
       <div class="card-grid" style="margin-bottom: 3rem;">
-        <div class="card"><i class="fas fa-tools"></i><h3>Bike Repairs</h3></div>
-        <div class="card"><i class="fas fa-cog"></i><h3>Full Servicing</h3></div>
-        <div class="card"><i class="fas fa-bicycle"></i><h3>Upgrades & Parts</h3></div>
-        <div class="card"><i class="fas fa-paint-roller"></i><h3>Bike Painting</h3></div>
-        <div class="card"><i class="fas fa-calendar-alt"></i><h3>Bicycle Rentals</h3></div>
+        <div class="card">
+          <img src="1000414847.jpg" alt="Bike Repairs" class="service-image">
+          <h3>Bike Repairs</h3>
+        </div>
+        <div class="card">
+          <img src="1000414850.jpg" alt="Full Servicing" class="service-image">
+          <h3>Full Servicing</h3>
+        </div>
+        <div class="card">
+          <img src="1000414853.jpg" alt="Upgrades & Parts" class="service-image">
+          <h3>Upgrades & Parts</h3>
+        </div>
+        <div class="card">
+          <img src="1000414856.jpg" alt="Bike Painting" class="service-image">
+          <h3>Bike Painting</h3>
+        </div>
+        <div class="card">
+          <img src="1000414859.jpg" alt="Bicycle Rentals" class="service-image">
+          <h3>Bicycle Rentals</h3>
+        </div>
       </div>
 
-      <!-- image slider -->
+      <!-- image slider (remains as gallery, not cards) -->
       <div class="slider-container fade-in">
         <div class="slider-images" id="serviceSlider">
           <img src="1000414847.jpg" alt="Bike repair">
@@ -438,20 +478,20 @@
     </div>
   </section>
 
-  <!-- why choose us -->
-  <section style="background: #0a0a0a;">
+  <!-- why choose us (cards updated to light) -->
+  <section style="background: #fafafa;">
     <div class="container">
       <h2 class="accent-text" style="font-size: 2.2rem;">Why Choose Us</h2>
       <div class="card-grid">
-        <div class="card"><i class="fas fa-clock"></i><h3>Fast Turnaround</h3><p>Same day service for most repairs</p></div>
-        <div class="card"><i class="fas fa-wallet"></i><h3>Affordable Pricing</h3><p>Quality work without breaking the bank</p></div>
-        <div class="card"><i class="fas fa-user-cog"></i><h3>Experienced Mechanics</h3><p>Cyclists fixing cyclists' bikes</p></div>
-        <div class="card"><i class="fas fa-store"></i><h3>Local Trusted Shop</h3><p>In Langebaan since 2015</p></div>
+        <div class="card"><i class="fas fa-clock" style="font-size:2.5rem; color: var(--accent); margin-bottom:1rem;"></i><h3>Fast Turnaround</h3><p>Same day service for most repairs</p></div>
+        <div class="card"><i class="fas fa-wallet" style="font-size:2.5rem; color: var(--accent); margin-bottom:1rem;"></i><h3>Affordable Pricing</h3><p>Quality work without breaking the bank</p></div>
+        <div class="card"><i class="fas fa-user-cog" style="font-size:2.5rem; color: var(--accent); margin-bottom:1rem;"></i><h3>Experienced Mechanics</h3><p>Cyclists fixing cyclists' bikes</p></div>
+        <div class="card"><i class="fas fa-store" style="font-size:2.5rem; color: var(--accent); margin-bottom:1rem;"></i><h3>Local Trusted Shop</h3><p>In Langebaan since 2015</p></div>
       </div>
     </div>
   </section>
 
-  <!-- reviews -->
+  <!-- reviews (light) -->
   <section>
     <div class="container">
       <h2 class="accent-text" style="font-size: 2.2rem;">Customer Reviews</h2>
@@ -463,7 +503,7 @@
     </div>
   </section>
 
-  <!-- contact section (split) -->
+  <!-- contact section (light split) -->
   <section id="contact" style="scroll-margin-top: 80px;">
     <div class="container">
       <div class="contact-split fade-in">
@@ -510,7 +550,7 @@
     </div>
   </div>
 
-  <!-- JavaScript -->
+  <!-- JavaScript (same functionality, adapted for light mode) -->
   <script>
     (function() {
       // Fade in on scroll
@@ -533,7 +573,6 @@
       
       function updateSlider() {
         slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-        // update dots
         Array.from(dotsContainer.children).forEach((dot, idx) => {
           dot.classList.toggle('active', idx === currentIndex);
         });
@@ -586,13 +625,7 @@
           chatCard.classList.remove('show');
         }
       });
-
-      // Sticky nav active link highlight (optional)
-      // and smooth scroll already with CSS
     })();
   </script>
-
-  <!-- additional empty space for logo assurance (already in header) -->
-  <!-- also strong CTAs: already in hero, contact, widget -->
 </body>
 </html>
